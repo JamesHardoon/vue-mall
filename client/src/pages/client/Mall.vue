@@ -3,7 +3,7 @@
     <header>
       <div class="container clear">
         <span class="title" @click="navTo('/mall')">MoreMall 一站式选购平台</span>
-        <NoticeList :notices="notices"/>
+        <!-- <NoticeList :notices="notices"/> -->
         <div class="right" v-if="clientToken">
           <span class="name">欢迎您，{{clientName}}</span>
           <span @click="navTo('/mall/personal')">个人中心</span>
@@ -19,7 +19,7 @@
       <div class="container">
         <router-view></router-view>
       </div>
-      <div class="fixedAd">
+      <!-- <div class="fixedAd">
         <img src="../../assets/img/index2.gif" alt="" />
         <ul class="fixedList">
           <li>
@@ -39,7 +39,7 @@
             <span>回顶部</span>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
     <div class="bottomInfo">
       <div class="container">
@@ -60,9 +60,7 @@
         </div>
         <div class="code footerItem">
           <p class="title">扫码下载APP</p>
-          <img src="../../assets/img/code.png" alt="" style="
-    width: 200px;
-"/>
+          <img src="../../assets/img/code.png" alt="" style="width: 200px;"/>
           <span>下载领1000元新人礼包</span>
         </div>
       </div>

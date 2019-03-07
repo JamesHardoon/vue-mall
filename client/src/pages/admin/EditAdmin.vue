@@ -60,7 +60,8 @@ export default {
   			this.oldPwd = '';
   			this.newPwd = '';
   			this.confirmPwd = '';
-  			console.log('修改成功！');
+				// console.log('修改成功！');
+				alert("修改成功！")
   		})
   		.catch((e)=>{
   			console.log(e);

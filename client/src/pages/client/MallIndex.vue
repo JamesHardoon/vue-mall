@@ -8,13 +8,13 @@
     <section class="newGoods section">
       <SectionHeader title="新品首发" tips="周一周四上新，为你寻觅世间好物" moreText="更多新品>"/>
       <Slick
-        :ulWidth="(266*goodsList.length)+(10*(goodsList.length-1))" 
+        :ulWidth="(266*goodsList.length)+(10*(goodsList.length-1))"
         :showWidth="(266*4)+(10*3)"
         :height="360"
       >
         <ul class="goodsList" :style="{width:`${(266*goodsList.length)+(10*(goodsList.length-1))}px`}" slot="list">
-          <GoodsItem 
-            v-for="(item,index) in goodsList" 
+          <GoodsItem
+            v-for="(item,index) in goodsList"
             :style="{marginRight: (index+1)%4===0?'0px':'6px'}"
             :key="+item.id"
             :id="item.id"
@@ -70,8 +70,8 @@
           />
         </ul>
         <ul class="right">
-           <GoodsItem 
-            v-for="(item,index) in goodsList.slice(0,6)" 
+           <GoodsItem
+            v-for="(item,index) in goodsList.slice(0,6)"
             :style="{marginBottom: index<=2?'10px':'0px'}"
             :key="+item.id"
             :id="item.id"
@@ -120,8 +120,8 @@
     <section class="typeSection section" v-for="(item,index) in typeList.slice(1)" :key="item.id">
       <SectionHeader :title="item.name" tips="" moreText="查看更多>" @click.native="selectType(item.id)"/>
       <ul class="content">
-          <GoodsItem 
-            v-for="(item,index) in filterGoodsByType(item.id).slice(0,4)" 
+          <GoodsItem
+            v-for="(item,index) in filterGoodsByType(item.id).slice(0,4)"
             :style="{marginRight: (index+1)%4===0?'0px':'25px'}"
             :key="+item.id"
             :id="item.id"
@@ -188,14 +188,14 @@ export default {
     },
     getGoodsList(typeId) {
       const res = getGoodsList(typeId);
-      debugger;
+      // debugger;
       res
         .then(data => {
-          debugger;
+          // debugger;
           this.goodsList = data;
         })
         .catch(e => {
-          debugger;
+          // debugger;
           console.log(e);
         });
     },
