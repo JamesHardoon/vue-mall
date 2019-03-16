@@ -141,7 +141,9 @@ export function getNoReplyMsg(){
     		if(json.code===0){
                 resolve(json.data);
             }else{
-                reject(json.message);
+          // alert(22222)
+            reject(json.message);
+            console.log(reject)
             }
     	})
 	    .catch((e)=>{

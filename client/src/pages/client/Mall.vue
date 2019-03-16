@@ -3,6 +3,7 @@
     <header>
       <div class="container clear">
         <span class="title" @click="navTo('/mall')">MoreMall 一站式选购平台</span>
+        <!--左上角logo旁的滚动广告-->
         <!-- <NoticeList :notices="notices"/> -->
         <div class="right" v-if="clientToken">
           <span class="name">欢迎您，{{clientName}}</span>
@@ -17,8 +18,10 @@
     </header>
     <div class="content" :style="{minHeight:clientHeight+'px'}">
       <div class="container">
+        <!--这里嵌入MallIndex里面的内容-->
         <router-view></router-view>
       </div>
+      <!--右侧的广告-->
       <!-- <div class="fixedAd">
         <img src="../../assets/img/index2.gif" alt="" />
         <ul class="fixedList">
@@ -41,30 +44,32 @@
         </ul>
       </div> -->
     </div>
-    <div class="bottomInfo">
-      <div class="container">
-        <div class="service footerItem">
-          <p class="title">客户服务</p>
-          <span><i class="iconfont icon-people_fill" />在线客服</span>
-          <span><i class="iconfont icon-fabulous" />用户反馈</span>
-        </div>
-        <div class="intro footerItem">
-          <p class="title">积惠多</p>
-          <p class="intro-p">积惠多(北京)科技有限公司旨在成为乡镇中独立运营的小商店、超市和供货商之间的桥梁。通过将高效的分销网络、与大量的优质品牌合作和数字化的平台相结合，使当地小商店、超市可以实时并直接地获取到品牌供应商最全面的货源</p>
-          <div>
-            关注我们：
-            <img src="http://yanxuan.nosdn.127.net/60068701f3a380911f237c26c91b39d0.png" alt=""/>
-            <img src="http://yanxuan.nosdn.127.net/031e783d7ee645b6096980d0bf83079b.png" alt=""/>
-            <img src="http://yanxuan.nosdn.127.net/0c8759a89cdbd7acf7f2921e6f0fad19.png" alt=""/>
-          </div>
-        </div>
-        <div class="code footerItem">
-          <p class="title">扫码下载APP</p>
-          <img src="../../assets/img/code.png" alt="" style="width: 200px;"/>
-          <span>下载领1000元新人礼包</span>
-        </div>
-      </div>
-    </div>
+    <!--底部在线客服用户反馈二维码等部分-->
+      <!--<div class="bottomInfo">-->
+        <!--<div class="container">-->
+          <!--<div class="service footerItem">-->
+            <!--<p class="title">客户服务</p>-->
+            <!--<span><i class="iconfont icon-people_fill" />在线客服</span>-->
+            <!--<span><i class="iconfont icon-fabulous" />用户反馈</span>-->
+          <!--</div>-->
+          <!--<div class="intro footerItem">-->
+            <!--<p class="title">积惠多</p>-->
+            <!--<p class="intro-p">积惠多(北京)科技有限公司旨在成为乡镇中独立运营的小商店、超市和供货商之间的桥梁。通过将高效的分销网络、与大量的优质品牌合作和数字化的平台相结合，使当地小商店、超市可以实时并直接地获取到品牌供应商最全面的货源</p>-->
+            <!--<div>-->
+              <!--关注我们：-->
+              <!--<img src="http://yanxuan.nosdn.127.net/60068701f3a380911f237c26c91b39d0.png" alt=""/>-->
+              <!--<img src="http://yanxuan.nosdn.127.net/031e783d7ee645b6096980d0bf83079b.png" alt=""/>-->
+              <!--<img src="http://yanxuan.nosdn.127.net/0c8759a89cdbd7acf7f2921e6f0fad19.png" alt=""/>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="code footerItem">-->
+            <!--<p class="title">扫码下载APP</p>-->
+            <!--<img src="../../assets/img/code.png" alt="" style="width: 200px;"/>-->
+            <!--<span>下载领1000元新人礼包</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--end-->
     <footer>
       <div class="container">
         <ul class="footerTop">
@@ -93,7 +98,8 @@
             <li>搜索推荐</li>
             <li>友情链接</li>
           </ul>
-          <p>积惠多(北京)科技有限公司版权所有 © 1996-2018   京ICP备18028417号-1</p>
+          <!--<p>积惠多(北京)科技有限公司版权所有 © 1996-2018   京ICP备18028417号-1</p>-->
+          <p>shoppingMall designed by fangz from HUN</p>
         </div>
       </div>
     </footer>

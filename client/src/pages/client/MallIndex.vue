@@ -1,10 +1,13 @@
 <template>
   <div class="MallIndex">
+    <!--首页banner轮播图-->
     <FadeSwiper class="swiperBox" :width="clientWidth" height="420px">
-      <img class="banner" slot="item1" src="../../assets/img/banner1.jpg" />
-      <img class="banner" slot="item2" src="../../assets/img/banner2.jpg" />
-      <img class="banner" slot="item3" src="../../assets/img/banner3.jpg" />
+      <img class="banner" slot="item1" src="https://img13.360buyimg.com/cms/jfs/t1/21601/26/8722/164735/5c77a438E4d582d7b/46520c846842cb65.jpg!q90" />
+      <img class="banner" slot="item2" src="https://img12.360buyimg.com/cms/jfs/t29596/17/865402269/414184/f1d4d326/5c00d15aN855c9085.jpg!q90" />
+      <img class="banner" slot="item3" src="https://img11.360buyimg.com/cms/jfs/t1/8182/28/13819/238862/5c50585fE9da5e2f1/e49d52c8e3443538.jpg!q90" />
+      <img class="banner" slot="item4" src="https://img13.360buyimg.com/cms/jfs/t25432/124/313678690/378319/55300518/5b6b9ae0N6937a9ac.jpg!q90" />
     </FadeSwiper>
+    <!--新品首发-->
     <section class="newGoods section">
       <SectionHeader title="新品首发" tips="周一周四上新，为你寻觅世间好物" moreText="更多新品>"/>
       <Slick
@@ -25,6 +28,7 @@
         </ul>
       </Slick>
     </section>
+    <!--限时购-->
     <section class="flashSale section">
       <SectionHeader title="限时购" tips="抢抢抢，好货不等人" moreText="更多抢购>"/>
       <div class="content">
@@ -58,6 +62,7 @@
         </ul>
       </div>
     </section>
+    <!--人气推荐-->
     <section class="hotGoods section">
       <SectionHeader title="人气推荐" tips="最火最潮商品，为您挑选" moreText="更多推荐>"/>
       <div class="content">
@@ -82,6 +87,7 @@
         </ul>
       </div>
     </section>
+    <!--品牌制造商-->
     <section class="maker section">
       <SectionHeader title="品牌制造商" tips="工厂直达消费者，剔除品牌溢价" moreText="更多制造商>"/>
       <div class="content">
@@ -117,20 +123,21 @@
         </div>
       </div>
     </section>
-    <section class="typeSection section" v-for="(item,index) in typeList.slice(1)" :key="item.id">
-      <SectionHeader :title="item.name" tips="" moreText="查看更多>" @click.native="selectType(item.id)"/>
-      <ul class="content">
-          <GoodsItem
-            v-for="(item,index) in filterGoodsByType(item.id).slice(0,4)"
-            :style="{marginRight: (index+1)%4===0?'0px':'25px'}"
-            :key="+item.id"
-            :id="item.id"
-            :img="item.img"
-            :name="item.name"
-            :price="item.price"
-          />
-      </ul>
-    </section>
+    <!--自定义新加的类目,目前有home和list-->
+    <!--<section class="typeSection section" v-for="(item,index) in typeList.slice(1)" :key="item.id">-->
+      <!--<SectionHeader :title="item.name" tips="" moreText="查看更多>" @click.native="selectType(item.id)"/>-->
+      <!--<ul class="content">-->
+          <!--<GoodsItem-->
+            <!--v-for="(item,index) in filterGoodsByType(item.id).slice(0,4)"-->
+            <!--:style="{marginRight: (index+1)%4===0?'0px':'25px'}"-->
+            <!--:key="+item.id"-->
+            <!--:id="item.id"-->
+            <!--:img="item.img"-->
+            <!--:name="item.name"-->
+            <!--:price="item.price"-->
+          <!--/>-->
+      <!--</ul>-->
+    <!--</section>-->
   </div>
 </template>
 

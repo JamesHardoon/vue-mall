@@ -171,7 +171,7 @@ export default {
     },
     sendComment(){
       if(this.curStar<=0 || this.comment==''){
-        console.log('评分和评价不能为空！');
+        alert('评分和评价不能为空！');
         return;
       }
       const res = sendComment({
@@ -184,7 +184,7 @@ export default {
       });
       res
       .then(()=>{
-        console.log('评价成功！');
+        alert('评价成功！');
         for(let order of this.orderList){
           if(order.id===this.curOrderId){
             order.hasComment = true;

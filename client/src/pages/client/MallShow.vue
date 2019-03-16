@@ -16,8 +16,12 @@
       </div>
     </FixedNav>
     <div class="logo">
+      <!--积惠报图片-->
       <img src="../../assets/img/jihuibaologo@3x 2.png" style='width: 67px;margin-top: 29px;position: absolute;left: 70px;'/>
+      <!--<img src="#" style='width: 67px;margin-top: 29px;position: absolute;left: 70px;'/>-->
+      <!--严选年货节gif动图-->
       <img src="../../assets/img/index1.gif"/>
+      <!--<img src="#"/>-->
       <div class="searchBox">
         <TipsInput
           placeholder="请输入商品关键字"

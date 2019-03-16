@@ -200,6 +200,7 @@ export default {
           this.msgList = data;
         })
         .catch(e => {
+          alert(e)
           console.log(e);
         });
     },
@@ -227,6 +228,7 @@ export default {
           this.askContent = "";
         })
         .catch(e => {
+          alert(e)
           console.log(e);
         });
     },
@@ -257,24 +259,7 @@ export default {
         console.log("请先登录！");
         return;
       }
-      const res = payByWechat({
-        token: this.clientToken,
-        goodsDetailId: this.temSpecId,
-        num: this.num,
-        state: 1,
-        amount: this.goodsPrice
-      });
-      res
-        .then(() => {
-          console.log("自动付款成功！请耐心等待包裹派送~");
-        })
-        .catch(e => {
-          console.log(e);
-        });
-
-      return;
-
-      // const res = addOrder({
+      // const res = payByWechat({  // 微信支付暂不支持  会报 “商户号mch_id或sub_mch_id不存在”
       //   token: this.clientToken,
       //   goodsDetailId: this.temSpecId,
       //   num: this.num,
@@ -288,6 +273,23 @@ export default {
       //   .catch(e => {
       //     console.log(e);
       //   });
+      //
+      // return;
+
+      const res = addOrder({
+        token: this.clientToken,
+        goodsDetailId: this.temSpecId,
+        num: this.num,
+        state: 1,
+        amount: this.goodsPrice
+      });
+      res
+        .then(() => {
+          console.log("自动付款成功！请耐心等待包裹派送~");
+        })
+        .catch(e => {
+          console.log(e);
+        });
     },
 
     getComment(goodsId) {
@@ -321,7 +323,7 @@ export default {
   mounted() {
     this.getGoodsInfo(this.id);
     this.getGoodsMsg(this.id);
-    this.getComment(this.id);
+    // this.getComment(this.id);
   },
 
   watch: {
