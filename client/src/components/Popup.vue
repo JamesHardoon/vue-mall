@@ -1,11 +1,16 @@
 <template>
   <div class="PopupWrapper" :style="{width:windowWidth+'px',height:windowHeight+'px',lineHeight:windowHeight+'px'}" @click.stop="closePopup">
+    <!--添加商品类目-->
     <div class="Popup" @click.stop="()=>{}">
       <div class="popupHeader">
+        <!--头部名称-->
         <span>{{title}}</span>
+        <!--头部的关闭按钮-->
         <span class="closeBtn" @click="closePopup"><i class="iconfont icon-close" /></span>
       </div>
+      <!---->
       <div class="popupBody">
+        <!--插槽,添加产品类目的名称以及确认按钮-->
         <slot name="popupContent"></slot>
       </div>
     </div>

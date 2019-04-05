@@ -355,10 +355,12 @@ export function getTypes(){
 //增加类目
 export function addType(data){
 	const res = axios.post('/api/admin/addType',data);
+	console.log(data)
 	return new Promise((resolve,reject)=>{
 		res
 		.then((result)=>{
 	        if(result.status===200){
+	          console.log('status==200 '+ result.data)
 	        	return result.data;
 	        }else{
 	        	reject(result.status)

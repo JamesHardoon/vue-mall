@@ -106,7 +106,7 @@ export default {
         });
         res
         .then(()=>{
-          console.log('创建商品成功！')
+          alert('创建商品成功！')
         })
         .catch((e)=>{
           console.log(e);
@@ -122,7 +122,7 @@ export default {
         });
         res
         .then(()=>{
-          console.log('修改成功！')
+          alert('修改成功！')
         })
         .catch((e)=>{
           console.log(e);

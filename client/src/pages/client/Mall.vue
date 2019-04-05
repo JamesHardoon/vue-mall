@@ -72,20 +72,20 @@
     <!--end-->
     <footer>
       <div class="container">
-        <ul class="footerTop">
-          <li>
-            <img src="//yanxuan.nosdn.127.net/e6021a6fcd3ba0af3a10243b7a2fda0d.png" alt="" />
-            <span>30天无忧退换货</span>
-          </li>
-          <li>
-            <img src="//yanxuan.nosdn.127.net/e09c44e4369232c7dd2f6495450439f1.png" alt="" />
-            <span>满88元免邮费</span>
-          </li>
-          <li>
-            <img src="//yanxuan.nosdn.127.net/e72ed4de906bd7ff4fec8fa90f2c63f1.png" alt="" />
-            <span>XX品质保证</span>
-          </li>
-        </ul>
+        <!--<ul class="footerTop">-->
+          <!--<li>-->
+            <!--<img src="//yanxuan.nosdn.127.net/e6021a6fcd3ba0af3a10243b7a2fda0d.png" alt="" />-->
+            <!--<span>30天无忧退换货</span>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<img src="//yanxuan.nosdn.127.net/e09c44e4369232c7dd2f6495450439f1.png" alt="" />-->
+            <!--<span>满88元免邮费</span>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<img src="//yanxuan.nosdn.127.net/e72ed4de906bd7ff4fec8fa90f2c63f1.png" alt="" />-->
+            <!--<span>XX品质保证</span>-->
+          <!--</li>-->
+        <!--</ul>-->
         <div class="footerBottom">
           <ul>
             <li>关于我们</li>
@@ -344,7 +344,8 @@ export default {
   }
   footer {
     width: 100%;
-    height: 208px;
+    /*height: 208px;*/
+    height: 108px;
     background-color: #414141;
     color: white;
     overflow: hidden;

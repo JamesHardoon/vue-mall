@@ -87,7 +87,7 @@ export default {
       });
       res
       .then(()=>{
-        console.log('修改成功!');
+        alert('修改成功!');
         this.setClientName(this.nickname);
       })
       .catch((e)=>{
@@ -102,7 +102,7 @@ export default {
     },
     updatePwd(){
       if(this.newPwd!==this.confirmPwd){
-        console.log('两次输入的密码不一致！');
+        alert('两次输入的密码不一致！');
         return;
       }
       const res = updatePwd({
@@ -116,7 +116,7 @@ export default {
         this.newPwd = '';
         this.confirmPwd = '';
         this.closePopup();
-        console.log('修改密码成功!');
+        alert('修改密码成功!');
       })
       .catch((e)=>{
         console.log(e);

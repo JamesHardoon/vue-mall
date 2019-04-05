@@ -39,6 +39,7 @@ export default {
 .SectionHeader{
   width: 100%;
   height: 66px;
+  margin-top: 50px; // 到banner图片的距离
   .left{
     display: inline-block;
     vertical-align: middle;

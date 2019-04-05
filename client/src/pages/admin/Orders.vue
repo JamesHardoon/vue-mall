@@ -64,7 +64,7 @@ export default {
   		const res = deleteOrder(id);
   		res
   		.then(()=>{
-  			console.log('删除成功');
+  			alert('删除成功');
   			this.orderList.map((item,index)=>{
   				if(item.id===id){
   					this.orderList.splice(index,1);

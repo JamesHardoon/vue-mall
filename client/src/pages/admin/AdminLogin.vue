@@ -48,7 +48,7 @@ export default {
         this.$router.push('/backstage');
       })
       .catch((e)=>{
-        console.log(e.message)
+        alert(e.message)
       })
     }
   }

@@ -111,7 +111,7 @@ export default {
       const res = deleteOrder(orderId);
       res
       .then(()=>{
-        console.log('删除订单成功！');
+        alert('删除订单成功！');
         this.orderList.map((item,index)=>{
           if(item.id===orderId){
             this.orderList.splice(index,1);
@@ -127,7 +127,7 @@ export default {
       const res = pay(orderId);
       res
       .then(()=>{
-        console.log('支付成功！');
+        alert('支付成功！');
         this.orderList.map((item,index)=>{
           if(item.id===orderId){
             item.state = 1;
@@ -142,7 +142,7 @@ export default {
       const res = confirmReceive(orderId);
       res
       .then(()=>{
-        console.log('确认收货成功！');
+        alert('确认收货成功！');
         this.orderList.map((item,index)=>{
           if(item.id===orderId){
             item.state = 3;

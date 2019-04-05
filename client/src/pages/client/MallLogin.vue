@@ -69,7 +69,7 @@ export default {
         this.$router.push('/');
       })
       .catch((e)=>{
-        console.log(e)
+        alert(e)
       })
     },
     signup(){

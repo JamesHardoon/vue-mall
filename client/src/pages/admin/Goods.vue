@@ -24,6 +24,7 @@
   		</ul>
   	</div>
   	<Popup title="增加类目" @popupClose="closePopup" v-show="popupShow">
+      <!--slot=“popupContent” 插槽名称,即Popup组件中的插槽slot将包含"请输入类目名称"和"确认"按钮部分-->
   		<div class="popupContent" slot="popupContent">
   			<input type="text" ref="typeInput" placeholder="请输入类目名称" />
   			<button @click="addConfirm">确认</button>
@@ -38,7 +39,7 @@ import Tag from '../../components/Tag';
 import Popup from '../../components/Popup';
 export default {
   name: 'Goods',
-  components:{
+  components:{ // 引入组件
   	Tag,
   	Popup
   },
@@ -55,7 +56,7 @@ export default {
   	return{
   		tags:[],
   		goodsList:[],
-  		popupShow:false,
+  		popupShow:false,  // 添加商品类目弹窗默认不显示出来
   		curIndex:0
   	}
   },
@@ -88,13 +89,13 @@ export default {
   		this.popupShow = false;
   	},
   	addConfirm(){
-  		const val = this.$refs.typeInput.value;
+  		const val = this.$refs.typeInput.value; // 获取input框输入的产品类目名称
   		const res = addType({
   			name:val
   		});
   		res
   		.then(()=>{
-  			console.log('添加成功!');
+  			alert('添加成功!');
   			this.getTypes();
   			this.closePopup();
   		})

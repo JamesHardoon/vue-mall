@@ -235,7 +235,7 @@ export default {
 
     addToCart() {
       if (!this.clientToken) {
-        console.log("请先登录！");
+        alert("请先登录！");
         return;
       }
       const res = addOrder({
@@ -247,7 +247,7 @@ export default {
       });
       res
         .then(() => {
-          console.log("加入购物车成功！请前往 个人中心->购物车 结算");
+          alert("加入购物车成功！请前往 个人中心->购物车 结算");
         })
         .catch(e => {
           console.log(e);
@@ -256,7 +256,7 @@ export default {
 
     buy() {
       if (!this.clientToken) {
-        console.log("请先登录！");
+        alert("请先登录！");
         return;
       }
       // const res = payByWechat({  // 微信支付暂不支持  会报 “商户号mch_id或sub_mch_id不存在”
@@ -285,7 +285,7 @@ export default {
       });
       res
         .then(() => {
-          console.log("自动付款成功！请耐心等待包裹派送~");
+          alert("自动付款成功！请耐心等待包裹派送~");
         })
         .catch(e => {
           console.log(e);
