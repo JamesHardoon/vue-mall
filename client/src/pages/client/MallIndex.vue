@@ -44,7 +44,7 @@
             <span class="time">{{s}}</span>
           </div>
           <div class="allBtn">查看全部 ></div>
-        </div><ul class="right"><li v-for="(item,index) in goodsList.slice(0,4)" :key="item.id">
+        </div><ul class="right"><li v-for="(item,index) in goodsList.slice(0,4)" :key="index">
             <img class="leftImg" :src="item.img" />
             <div class="rightBox">
               <p class="goodsName ellipsis" @click="navTo('/mall/goods/'+item.id)">{{item.name}}</p>
