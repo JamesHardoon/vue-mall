@@ -43,8 +43,11 @@
 </template>
 
 <script>
+// 引入store中state的clientToken状态,即用户的登录状态
 import { mapState } from 'vuex';
+// 引入的接口: 获取用户订单列表、删除订单、结算购物车
 import {getOrderByState,deleteOrder,settleAccounts} from '../../api/client';
+// 商品数量增减组件
 import NumberInput from '../../components/NumberInput';
 
 export default {
@@ -52,11 +55,11 @@ export default {
   components:{
     NumberInput
   },
-  computed:{
+  computed:{  // 监控数据的变化
     ...mapState([
       'clientToken'
     ]),
-    totalAmount(){
+    totalAmount(){  // 商品的总价
       let amount = 0;
       this.orderList.map((item,index)=>{
         amount+=item.amount;
@@ -66,13 +69,13 @@ export default {
   },
   data () {
     return {
-      orderList:[],
+      orderList:[],  // 从getOrderByState接口中读取到的数据存放在这个数组中
     }
   },
 
   methods:{
-    getOrderByState(state){
-      const res = getOrderByState(state,this.clientToken);
+    getOrderByState(state){  // 获取用户订单列表,页面加载时,即执行此方法,在mounted中定义了,state为订单的状态(0:未付款,1:未发货,2:已发货,3:已到货)
+      const res = getOrderByState(state,this.clientToken); // this.clientToken 表示当前用户的登录信息
       res
       .then((data)=>{
         this.orderList=data;
@@ -84,7 +87,7 @@ export default {
         console.log(e);
       })
     },
-    numberChange(orderId){
+    numberChange(orderId){ // 商品数量增减
       this.orderList.map((item,index)=>{
         if(orderId===item.id){
           item.amount = item.temGoodsNum*item.goods.unitPrice;
@@ -92,7 +95,7 @@ export default {
         }
       })
     },
-    deleteOrder(orderId){
+    deleteOrder(orderId){  // 删除订单
       const res = deleteOrder(orderId);
       res
       .then(()=>{
@@ -107,10 +110,10 @@ export default {
         console.log(e);
       })
     },
-    navTo(route){
+    navTo(route){  // 点击购物车中相应商品的名称，跳转到商品对应的详情页
       this.$router.push(route);
     },
-    settleAccounts(){
+    settleAccounts(){  // 下单操作
       let cartList = [];
       this.orderList.map((item,index)=>{
         cartList.push({
@@ -124,8 +127,8 @@ export default {
       });
       res
       .then(()=>{
-        console.log('下单成功！');
-        this.orderList = [];
+        alert('下单成功！');
+        this.orderList = []; // 下单成功后情况购物车
       })
       .catch((e)=>{
         console.log(e);
@@ -134,7 +137,7 @@ export default {
   },
 
   mounted(){
-    this.getOrderByState(0);
+    this.getOrderByState(0); // 0表示未付款
   },
 }
 </script>

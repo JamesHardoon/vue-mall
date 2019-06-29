@@ -2,7 +2,7 @@
   <div class="MallShow">
     <FixedNav v-show="navShouldFixed">
       <div slot="navContent" class="container fixedNavContainer">
-        <h3 class="fixedLeft" @click="navTo('/mall/show/index')">MoreMall</h3>
+        <h3 class="fixedLeft" @click="navTo('/mall/show/index')">D-Mall</h3>
         <ul class="fixedRight">
           <li 
             v-for="(item,index) in typeList" 
@@ -91,7 +91,7 @@ export default {
         }
       }
     },
-    selectType(typeId) {
+    selectType(typeId) { // 判断搜索框的位置是首页还是商品类别
       //首页
       if (typeId === -1) {
         this.navTo("/mall/show/index");
@@ -100,17 +100,17 @@ export default {
       }
     },
     searchTip(tip) {
-      console.log(tip);
+      alert(tip);
     },
     searchTextChange(text) {},
-    searchConfirm() {
+    searchConfirm() {  // 首页搜索
       if (this.searchText.trim().length <= 0) {
-        console.log("输入不能为空！");
+        alert("输入不能为空！");
         return;
       }
-      this.navTo(`/mall/show/goodsList/0/${this.searchText}`);
+      this.navTo(`/mall/show/goodsList/0/${this.searchText}`);  // 跳转到相应的搜索内容部分
     },
-    scrollHandle() {
+    scrollHandle() {  // 首页  头部滚动一定距离后固定
       const top = this.$refs.typeList.getBoundingClientRect().top;
       //还未到顶
       if (top > 0) {

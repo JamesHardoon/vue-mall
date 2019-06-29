@@ -103,18 +103,20 @@
 
 <script>
 import { mapState } from "vuex";
+// 引入的接口,,,,
+// ,,,
 import {
-  getGoodsInfo,
-  getGoodsMsg,
-  askGoodsMsg,
-  addOrder,
-  payByWechat,
-  getComment,
-  getGoodsList
+  getGoodsInfo,//获得商品详情页信息
+  getGoodsMsg,//获得商品详情页问答区数据
+  askGoodsMsg,//发送商品msg
+  addOrder,//加入购物车
+  payByWechat,//唤起微信支付(没使用到)
+  getComment,//获得商品评论
+  getGoodsList //获得不同类目的商品
 } from "../../api/client";
-import NumberInput from "../../components/NumberInput";
-import Radio from "../../components/Radio";
-import GoodsItem from "../../components/GoodsItem";
+import NumberInput from "../../components/NumberInput";  // 商品数量增减组件
+import Radio from "../../components/Radio";  // 商品规格选择组件
+import GoodsItem from "../../components/GoodsItem";  // 单个商品组件
 
 export default {
   name: "GoodsDetail",
@@ -124,7 +126,7 @@ export default {
     GoodsItem
   },
   computed: {
-    ...mapState(["clientToken", "clientName"]),
+    ...mapState(["clientToken", "clientName"]),   // 从状态管理中获取到当前用户的登录信息,以及当前用户的用户名
     id() {
       return this.$route.params.id;
     },
@@ -137,7 +139,7 @@ export default {
       });
       return this.num * unitPrice;
     },
-    temStockNum() {
+    temStockNum() {  // 商品的最大数量,最大数量就是该商品在数据库中的数量
       let stockNum = 0;
       this.specs.map((item, index) => {
         if (item.id === this.temSpecId) {
@@ -154,20 +156,20 @@ export default {
   },
   data() {
     return {
-      goodsImg: "",
-      goodsName: "",
-      goodsDesc: "",
-      specs: [],
-      typeId: "",
-      temSpecId: 0,
-      num: 1,
-      msgList: [],
-      askContent: "",
+      goodsImg: "",  // 商品图片
+      goodsName: "", // 商品名称
+      goodsDesc: "", // 商品描述
+      specs: [],     // 商品规格数组，从getGoodsInfo(获得商品详情页信息)接口中读取到的数据
+      typeId: "",    // 商品ID  ,从getGoodsInfo(获得商品详情页信息)接口中读取到的数据
+      temSpecId: 0,  // 商品  ,从getGoodsInfo(获得商品详情页信息)接口中读取到的数据
+      num: 1,        // 商品数量,默认为1
+      msgList: [],   // 商品问答
+      askContent: "", // 商品问答,提问部分
       tagList: ["评价", "商品问答"],
-      curIndex: 0,
-      rate: "",
-      commentList: [],
-      goodsList: []
+      curIndex: 0,  // 商品图片
+      rate: "",  // 用户评价的等级
+      commentList: [],  // 用户的评价数组
+      goodsList: []  // 商品图片
     };
   },
 
@@ -176,7 +178,7 @@ export default {
       this.curIndex = i;
     },
 
-    getGoodsInfo(id) {
+    getGoodsInfo(id) {  // 获得商品详情页信息
       const res = getGoodsInfo(id);
       res
         .then(data => {
@@ -193,7 +195,7 @@ export default {
         });
     },
 
-    getGoodsMsg(id) {
+    getGoodsMsg(id) {  // //获得商品详情页问答区数据
       const res = getGoodsMsg(id);
       res
         .then(data => {
@@ -205,7 +207,7 @@ export default {
         });
     },
 
-    postAsk() {
+    postAsk() {  // 提问
       if (this.askContent.trim().length <= 0) {
         return;
       }
@@ -215,25 +217,25 @@ export default {
         goodsId: this.id
       });
       res
-        .then(() => {
-          let time = new Date();
-          this.msgList.unshift({
-            id: "new",
-            content: this.askContent,
-            state: 0,
-            asker: this.clientName,
-            time: time.getMonth() + 1 + "-" + time.getDate(),
-            reply: {}
-          });
-          this.askContent = "";
-        })
-        .catch(e => {
-          alert(e)
-          console.log(e);
+      .then(() => {
+        let time = new Date();
+        this.msgList.unshift({
+          id: "new",
+          content: this.askContent,
+          state: 0,
+          asker: this.clientName,
+          time: time.getMonth() + 1 + "-" + time.getDate(),
+          reply: {}
         });
+        this.askContent = "";
+      })
+      .catch(e => {
+        alert(e)
+        console.log(e);
+      });
     },
 
-    addToCart() {
+    addToCart() {  // 加入购物车
       if (!this.clientToken) {
         alert("请先登录！");
         return;
@@ -254,7 +256,7 @@ export default {
         });
     },
 
-    buy() {
+    buy() { // 立即购买
       if (!this.clientToken) {
         alert("请先登录！");
         return;
@@ -292,21 +294,21 @@ export default {
         });
     },
 
-    getComment(goodsId) {
+    getComment(goodsId) { //获取商品评论
       const res = getComment(goodsId);
       res
-        .then(data => {
-          if (Object.keys(data).length <= 0) {
-            this.rate = "";
-            this.commentList = [];
-            return;
-          }
-          this.rate = data.rate;
-          this.commentList = data.commentList;
-        })
-        .catch(e => {
-          console.log(e);
-        });
+      .then(data => {
+        if (Object.keys(data).length <= 0) {
+          this.rate = "";
+          this.commentList = [];
+          return;
+        }
+        this.rate = data.rate;
+        this.commentList = data.commentList;
+      })
+      .catch(e => {
+        console.log(e);
+      });
     },
 
     getTypeGoodsList(typeId) {
@@ -321,9 +323,9 @@ export default {
     }
   },
   mounted() {
-    this.getGoodsInfo(this.id);
-    this.getGoodsMsg(this.id);
-    // this.getComment(this.id);
+    this.getGoodsInfo(this.id); // 页面加载时,获得商品详情页信息
+    this.getGoodsMsg(this.id);  // 页面加载时,获取问答区数据
+    this.getComment(this.id);  // 页面加载时,获取用户评价
   },
 
   watch: {

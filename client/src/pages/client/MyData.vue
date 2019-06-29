@@ -44,6 +44,7 @@
 
 <script>
 import { mapState,mapMutations } from 'vuex';
+// 引入接口，获取用户信息，更新用户信息，更新用户密码
 import {getUserData,updateUserData,updatePwd} from '../../api/client';
 import Popup from '../../components/Popup';
 

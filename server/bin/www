@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+// 项目入口,通过www引入app.js配置内容
+// config文件夹中的sequelizeBase.js为mysql的配置信息(用户名,密码,端口号)
+// controllers为控制器,对请求的操作,(相当于MVC中的C)
+// models数据模型(相当于MVC中的M)
 
 /**
  * Module dependencies.

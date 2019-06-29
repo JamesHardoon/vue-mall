@@ -22,7 +22,10 @@
 	            	<td>{{item.amount}}</td>
 	            	<td>{{item.state}}</td>
 	            	<td>{{item.time}}</td>
-	                <td><button class="normal" @click="editOrder(item.id)">编辑</button><button class="delete" @click="deleteOrder(item.id)">删除</button></td>
+	                <td>
+										<button class="normal" @click="editOrder(item.id)">编辑</button>
+										<!-- <button class="delete" @click="deleteOrder(item.id)">删除</button> -->
+									</td>
 	            </tr>
 	        </tbody>
 	    </table>

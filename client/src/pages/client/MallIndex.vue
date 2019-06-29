@@ -123,31 +123,34 @@
         <!--</div>-->
       <!--</div>-->
     <!--</section>-->
+
     <!--自定义新加的类目,目前有home和list-->
-    <!--<section class="typeSection section" v-for="(item,index) in typeList.slice(1)" :key="item.id">-->
-      <!--<SectionHeader :title="item.name" tips="" moreText="查看更多>" @click.native="selectType(item.id)"/>-->
-      <!--<ul class="content">-->
-          <!--<GoodsItem-->
-            <!--v-for="(item,index) in filterGoodsByType(item.id).slice(0,4)"-->
-            <!--:style="{marginRight: (index+1)%4===0?'0px':'25px'}"-->
-            <!--:key="+item.id"-->
-            <!--:id="item.id"-->
-            <!--:img="item.img"-->
-            <!--:name="item.name"-->
-            <!--:price="item.price"-->
-          <!--/>-->
-      <!--</ul>-->
-    <!--</section>-->
+    <!-- <section class="typeSection section" v-for="(item,index) in typeList.slice(1)" :key="item.id"> -->
+    <section class="typeSection section" v-for="(item,index) in typeList.slice(1)" :key="index">
+      <SectionHeader :title="item.name" tips="" moreText="查看更多>" @click.native="selectType(item.id)"/>
+      <ul class="content">
+          <GoodsItem
+            v-for="(item,index) in filterGoodsByType(item.id).slice(0,4)"
+            :style="{marginRight: (index+1)%4===0?'0px':'25px'}"
+            :key="+item.id"
+            :id="item.id"
+            :img="item.img"
+            :name="item.name"
+            :price="item.price"
+          />
+      </ul>
+    </section>
   </div>
 </template>
 
 <script>
+// 引入接口,getTypes:获取类目,getGoodsList:获得不同类目的商品
 import { getTypes, getGoodsList } from "../../api/client";
-import SectionHeader from "../../components/SectionHeader";
-import ZoomImg from "../../components/ZoomImg";
-import GoodsItem from "../../components/GoodsItem";
-import Slick from "../../components/Slick";
-import FadeSwiper from "../../components/FadeSwiper";
+import SectionHeader from "../../components/SectionHeader"; // 商品类目头部,例如新品首发限时购等
+import ZoomImg from "../../components/ZoomImg"; // 图片放大
+import GoodsItem from "../../components/GoodsItem"; // 商品
+import Slick from "../../components/Slick";  // 新品首发的轮播
+import FadeSwiper from "../../components/FadeSwiper"; // 轮播
 
 import { getClientSize, getScrollWidth } from "../../util/util";
 
@@ -187,7 +190,7 @@ export default {
     navTo(route) {
       this.$router.push(route);
     },
-    selectType(typeId) {
+    selectType(typeId) { //查看更多
       if (typeId == -1) {
         return;
       }

@@ -2,9 +2,9 @@
   <div class="Mall">
     <header>
       <div class="container clear">
-        <span class="title" @click="navTo('/mall')">MoreMall 一站式选购平台</span>
+        <span class="title" @click="navTo('/mall')">D-Mall 一站式选购平台</span>
         <!--左上角logo旁的滚动广告-->
-        <!-- <NoticeList :notices="notices"/> -->
+        <NoticeList :notices="notices"/>
         <div class="right" v-if="clientToken">
           <span class="name">欢迎您，{{clientName}}</span>
           <span @click="navTo('/mall/personal')">个人中心</span>
@@ -22,27 +22,28 @@
         <router-view></router-view>
       </div>
       <!--右侧的广告-->
-      <!-- <div class="fixedAd">
-        <img src="../../assets/img/index2.gif" alt="" />
-        <ul class="fixedList">
-          <li>
-            <i class="iconfont icon-collection_fill" />
-            <span>新人有礼</span>
-          </li>
-          <li>
-            <i class="iconfont icon-paixing-copy" />
-            <span>热门商品</span>
-          </li>
-          <li>
-            <i class="iconfont icon-fabulous" />
-            <span>用户反馈</span>
-          </li>
-          <li @click="backToTop" v-show="shouldShowBT">
+      <!-- <div class="fixedAd"> -->
+        <!-- <img src="../../assets/img/index2.gif" alt="" /> -->
+        <!-- <img src="" alt="" /> -->
+        <!-- <ul class="fixedList"> -->
+          <!-- <li> -->
+            <!-- <i class="iconfont icon-collection_fill" /> -->
+            <!-- <span>新人有礼</span> -->
+          <!-- </li> -->
+          <!-- <li> -->
+            <!-- <i class="iconfont icon-paixing-copy" /> -->
+            <!-- <span>热门商品</span> -->
+          <!-- </li> -->
+          <!-- <li> -->
+            <!-- <i class="iconfont icon-fabulous" /> -->
+            <!-- <span>用户反馈</span> -->
+          <!-- </li> -->
+          <!-- <li @click="backToTop" v-show="shouldShowBT">
             <i class="iconfont icon-arrows-4-7" />
             <span>回顶部</span>
-          </li>
-        </ul>
-      </div> -->
+          </li> -->
+        <!-- </ul> -->
+      <!-- </div> -->
     </div>
     <!--底部在线客服用户反馈二维码等部分-->
       <!--<div class="bottomInfo">-->
@@ -90,12 +91,12 @@
           <ul>
             <li>关于我们</li>
             <li>帮助中心</li>
-            <li>售后服务</li>
-            <li>配送与验收</li>
-            <li>商务合作</li>
-            <li>企业采购</li>
-            <li>开放平台</li>
-            <li>搜索推荐</li>
+            <!-- <li>售后服务</li> -->
+            <!-- <li>配送与验收</li> -->
+            <!-- <li>商务合作</li> -->
+            <!-- <li>企业采购</li> -->
+            <!-- <li>开放平台</li> -->
+            <!-- <li>搜索推荐</li> -->
             <li>友情链接</li>
           </ul>
           <!--<p>积惠多(北京)科技有限公司版权所有 © 1996-2018   京ICP备18028417号-1</p>-->
@@ -108,22 +109,22 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import NoticeList from "../../components/NoticeList";
-import { getClientSize, backToTop } from "../../util/util";
+import NoticeList from "../../components/NoticeList";  // 左上角logo旁的滚动广告
+import { getClientSize, backToTop } from "../../util/util";  // 通用的工具类,获取屏幕宽高,以及回到顶部
 
 export default {
   name: "Mall",
   computed: {
-    ...mapState(["clientToken", "clientName"])
-  },
+    ...mapState(["clientToken", "clientName"])  // 用户tokenh和用户名
+  }, 
   components: {
     NoticeList
   },
   data() {
     return {
-      notices: [
-        "今日疯抢：牛皮防水男靴仅229元！直减2...",
-        "【福利】领1000元APP新人礼"
+      notices: [  // // 左上角logo旁的滚动广告
+        "最新上架徕卡相机",
+        "今日大酬宾"
       ],
       clientHeight: getClientSize().height,
       shouldShowBT: false
@@ -132,7 +133,7 @@ export default {
 
   methods: {
     ...mapMutations({
-      clientLogout: "CLIENT_LOGOUT"
+      clientLogout: "CLIENT_LOGOUT"  // 登出
     }),
     navTo(route) {
       this.$router.push(route);

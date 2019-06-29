@@ -24,8 +24,9 @@
 </template>
 
 <script>
+// 引入接口,getGoodsList:获得不同类目的商品,searchGoods:关键词搜索商品
 import {getGoodsList,searchGoods} from '../../api/client';
-import GoodsItem from '../../components/GoodsItem';
+import GoodsItem from '../../components/GoodsItem';  // 单个商品组件
 
 export default {
   name: 'GoodsList',
@@ -65,7 +66,7 @@ export default {
   },
 
   methods:{
-    getGoodsList(typeId){
+    getGoodsList(typeId){  // 获得不同类目的商品
       const res = getGoodsList(typeId);
       res.then((data)=>{
         this.goodsList = data;
@@ -74,7 +75,7 @@ export default {
         console.log(e);
       })
     },
-    searchGoods(keyword){
+    searchGoods(keyword){  // 关键字搜索商品
       const res = searchGoods(keyword);
       res.then((data)=>{
         this.goodsList = data;
@@ -83,7 +84,7 @@ export default {
         console.log(e);
       })
     },
-    changeSortMode(mode){
+    changeSortMode(mode){  // 排序的方式
       if(mode===3){
         this.sortMode = this.sortMode===1?2:1;
       }else{
@@ -94,11 +95,11 @@ export default {
 
   mounted(){
     //类别页
-    if(!this.isSearchPage){
+    if(!this.isSearchPage){  // 点击类别进来的时候显示
       this.getGoodsList(this.typeId);
     }
     //搜索结果页
-    else{
+    else{  // 从搜索框进来的时候显示
       this.searchGoods(this.keyword);
     }
     
